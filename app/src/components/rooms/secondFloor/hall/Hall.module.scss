@@ -1,0 +1,133 @@
+.wrapper {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  background-color: #eaeaea;
+  overflow-x: scroll;
+}
+
+.background {
+  margin-top: 20px;
+  background-image: url('../../../../img/hall.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-width: calc(1440px * 0.4);
+  height: calc(1024px * 0.4);
+  position: relative;
+}
+
+.room {
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  background-color: rgba(255, 102, 51, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__door1 {
+    width: 6%;
+    height: 20%;
+
+    top: 12%;
+    left: 43%;
+  }
+
+  &__door2 {
+    width: 6%;
+    height: 20%;
+    top: 44%;
+    left: 87%;
+  }
+
+  &__wallpaper1 {
+    width: 10%;
+    height: 16%;
+    top: 16%;
+    left: 50%;
+  }
+
+  &__wallpaper2 {
+    width: 9%;
+    height: 16%;
+    top: 25%;
+    left: 63%;
+  }
+
+  &__wallpaper3 {
+    width: 9%;
+    height: 16%;
+    top: 35%;
+    left: 75%;
+  }
+
+  &__plat1 {
+    width: 11%;
+    height: 9%;
+    top: 43%;
+    left: 22%;
+  }
+
+  &__plat2 {
+    width: 11%;
+    height: 9%;
+    top: 53%;
+    left: 35%;
+  }
+
+  &__plat3 {
+    width: 11%;
+    height: 9%;
+    top: 65%;
+    left: 50%;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .wrapper {
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 700px) and (min-height: 512px) {
+  .background {
+    width: calc(1440px * 0.5);
+    height: calc(1024px * 0.5);
+  }
+}
+
+@media screen and (min-width: 870px) and (min-height: 614px) {
+  .background {
+    width: calc(1440px * 0.6);
+    height: calc(1024px * 0.6);
+  }
+}
+
+@media screen and (min-width: 1020px) and (min-height: 716px) {
+  .background {
+    width: calc(1440px * 0.7);
+    height: calc(1024px * 0.7);
+  }
+}
+
+@media screen and (min-width: 1175px) and (min-height: 819px) {
+  .background {
+    width: calc(1440px * 0.8);
+    height: calc(1024px * 0.8);
+  }
+}
+
+@media screen and (min-width: 1320px) and (min-height: 921px) {
+  .background {
+    width: calc(1440px * 0.9);
+    height: calc(1024px * 0.9);
+  }
+}
+
+@media screen and (min-width: 1460px) and (min-height: 1024px) {
+  .background {
+    width: 1440px;
+    height: 1024px;
+  }
+}
