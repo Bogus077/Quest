@@ -1,0 +1,27 @@
+version: '2.0'
+services:
+  frontend:
+    image: node:latest
+    # env_file:
+    # - .env
+    volumes:
+      - ./app:/app
+    expose:
+      - '3000'
+    entrypoint: [sh, -c, 'cd /app && yarn install && yarn start']
+  nginx:
+    image: nginx:alpine
+    tty: true
+    # env_file:
+    # - .env
+    depends_on:
+      - frontend
+    volumes:
+      - ./templates:/etc/nginx/templates
+      - ./docker/config/conf.d:/etc/nginx/conf.d/
+      # - ./docker/config/log:/var/log/nginx/
+      # - ./docker/config/cert:/etc/nginx/cert/
+    ports:
+      - 3000:80
+    links:
+      - frontend
