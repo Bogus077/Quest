@@ -21,6 +21,7 @@ export const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path={'/'} element={<TestPage />} />
+            <Route path={'/:roomId'} element={<TestPage />} />
             <Route element={<ProtectedRoutes />}>
               <></>
             </Route>

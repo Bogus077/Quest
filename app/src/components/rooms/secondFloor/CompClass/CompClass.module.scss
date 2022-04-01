@@ -11,7 +11,7 @@
 
 .background {
   margin-top: 20px;
-  background-image: url('../../../../img/hall.png');
+  background-image: url('../../../../img/comp.png');
   background-size: contain;
   background-repeat: no-repeat;
   min-width: calc(1440px * 0.4);
@@ -32,57 +32,8 @@
     width: 6%;
     height: 20%;
 
-    top: 12%;
-    left: 43%;
-  }
-
-  &__door2 {
-    width: 6%;
-    height: 20%;
-    top: 44%;
-    left: 87%;
-  }
-
-  &__wallpaper1 {
-    width: 10%;
-    height: 16%;
-    top: 16%;
-    left: 50%;
-  }
-
-  &__wallpaper2 {
-    width: 9%;
-    height: 16%;
-    top: 25%;
-    left: 63%;
-  }
-
-  &__wallpaper3 {
-    width: 9%;
-    height: 16%;
-    top: 35%;
-    left: 75%;
-  }
-
-  &__plat1 {
-    width: 11%;
-    height: 9%;
-    top: 43%;
-    left: 22%;
-  }
-
-  &__plat2 {
-    width: 11%;
-    height: 9%;
-    top: 53%;
-    left: 35%;
-  }
-
-  &__plat3 {
-    width: 11%;
-    height: 9%;
-    top: 65%;
-    left: 50%;
+    top: 75%;
+    left: 57%;
   }
 }
 

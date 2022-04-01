@@ -2,15 +2,17 @@
 import React from 'react';
 import classNames from 'classnames';
 import styles from './Hall.module.scss';
+import { useNavigate } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 export const Hall = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.wrapper}>
       <div className={styles.background}>
         <div
           className={cx(styles.room, styles.room__door1)}
-          onClick={() => console.log('door1')}
+          onClick={() => navigate('/20')}
         >
           door1
         </div>
