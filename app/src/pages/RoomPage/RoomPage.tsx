@@ -1,13 +1,14 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { CompClass } from '../../components/rooms/secondFloor/CompClass';
-import { Hall } from '../../components/rooms/secondFloor/hall';
+import { Hall } from '../../components/rooms/secondFloor/Hall';
+import { roomLinks } from '../../utils/roomLinks';
 
-export const TestPage = () => {
+export const RoomPage = () => {
   const roomId = useParams().roomId;
 
   switch (roomId) {
-    case '20':
+    case roomLinks.compClass.slice(1):
       return <CompClass />;
     default:
       return <Hall />;

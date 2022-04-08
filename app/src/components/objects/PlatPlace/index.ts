@@ -1,0 +1,1 @@
+export { PlatPlace } from './PlatPlace';

@@ -1,0 +1,1 @@
+export { CompClass } from './CompClass';

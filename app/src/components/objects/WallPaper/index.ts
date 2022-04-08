@@ -1,0 +1,1 @@
+export { WallPaper } from './WallPaper';
