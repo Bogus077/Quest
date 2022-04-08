@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react';
 import classNames from 'classnames';
 import styles from './CompClass.module.scss';
