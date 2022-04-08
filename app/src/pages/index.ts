@@ -1,1 +1,1 @@
-export { RoomPage } from './RoomPage/index';
+export { RoomPage } from './RoomPage';
