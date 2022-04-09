@@ -13,7 +13,7 @@ export const Hall = () => {
         className={styles.background}
         style={{ backgroundImage: `url(${background})` }}
       >
-        <Door left="44.2%" top="12.3%" to={roomLinks.compClass} />
+        <Door left="44.2%" top="12.3%" to={roomLinks.compClass.link} />
         <Door left="88%" top="45%" />
         <WallPaper left="50.5%" top="16%" />
         <WallPaper left="63%" top="25%" />

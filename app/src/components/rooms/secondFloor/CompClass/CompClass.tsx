@@ -2,14 +2,15 @@ import React from 'react';
 import styles from './CompClass.module.scss';
 import { Door } from '../../../objects/Door';
 import { ComputerDesk } from '../../../objects/ComputerDesk';
-import compClass from './compClass.jpg';
+import { roomLinks } from '../../../../utils/roomLinks';
+import background from './compClass.jpg';
 
 export const CompClass = () => {
   return (
     <div className={styles.wrapper}>
       <div
         className={styles.background}
-        style={{ backgroundImage: `url(${compClass})` }}
+        style={{ backgroundImage: `url(${background})` }}
       >
         <ComputerDesk left="8%" top="37%" />
         <ComputerDesk left="19%" top="46%" />
@@ -26,7 +27,7 @@ export const CompClass = () => {
         <ComputerDesk left="85%" top="60%" />
         <ComputerDesk left="77%" top="66%" />
 
-        <Door left="58%" top="76%" to="/" />
+        <Door left="58%" top="76%" to={roomLinks.hall2nd.link} />
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ export const RoomPage = () => {
   const roomId = useParams().roomId;
 
   switch (roomId) {
-    case roomLinks.compClass.slice(1):
+    case roomLinks.compClass.id:
       return <CompClass />;
     default:
       return <Hall />;

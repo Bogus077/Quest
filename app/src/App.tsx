@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore } from './redux';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { RoomPage } from './pages';
+import { RoomPage } from './pages/RoomPage';
 
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
@@ -20,8 +20,8 @@ export const App = () => {
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <Routes>
-            <Route path={'/'} element={<RoomPage />} />
-            <Route path={'/:roomId'} element={<RoomPage />} />
+            <Route path={'/room'} element={<RoomPage />} />
+            <Route path={'/room/:roomId'} element={<RoomPage />} />
             <Route element={<ProtectedRoutes />}>
               <></>
             </Route>
