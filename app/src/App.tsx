@@ -20,6 +20,7 @@ export const App = () => {
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <Routes>
+            <Route path={'/'} element={<RoomPage />} />
             <Route path={'/room'} element={<RoomPage />} />
             <Route path={'/room/:roomId'} element={<RoomPage />} />
             <Route element={<ProtectedRoutes />}>
