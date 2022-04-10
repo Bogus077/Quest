@@ -25,6 +25,12 @@ export const Hall = () => {
         <PlatPlace left="35%" top="53%" />
         <PlatPlace left="50%" top="64%" />
         <GoArrow left="75%" top="64%" to={roomLinks.hall2ndRight.link} />
+        <GoArrow
+          left="25%"
+          top="27%"
+          to={roomLinks.sportRoom.link}
+          mirrored={true}
+        />
       </div>
     </div>
   );

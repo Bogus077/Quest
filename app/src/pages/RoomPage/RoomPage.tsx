@@ -5,6 +5,9 @@ import { Cab20 } from '../../components/rooms/secondFloor/Cab20';
 import { Cab20a } from '../../components/rooms/secondFloor/Cab20a';
 import { Hall } from '../../components/rooms/secondFloor/Hall';
 import { HallRight } from '../../components/rooms/secondFloor/HallRight';
+import { TeachersRoom } from '../../components/rooms/secondFloor/TeachersRoom';
+import { Press } from '../../components/rooms/secondFloor/Press';
+import { SportRoom } from '../../components/rooms/firstFloor/SportRoom';
 import { roomLinks } from '../../utils/roomLinks';
 
 export const RoomPage = () => {
@@ -19,6 +22,12 @@ export const RoomPage = () => {
       return <Cab20a />;
     case roomLinks.hall2ndRight.id:
       return <HallRight />;
+    case roomLinks.teachersRoom.id:
+      return <TeachersRoom />;
+    case roomLinks.press.id:
+      return <Press />;
+    case roomLinks.sportRoom.id:
+      return <SportRoom />;
     default:
       return <Hall />;
   }

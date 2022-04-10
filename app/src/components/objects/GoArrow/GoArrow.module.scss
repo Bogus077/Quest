@@ -4,3 +4,7 @@ $objectWidth: 347px;
 $objectHeight: 200px;
 
 @include standartObjectStyles;
+
+.mirrored {
+  transform: scale(-1, -1);
+}
