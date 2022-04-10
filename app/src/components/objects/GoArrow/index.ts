@@ -1,0 +1,1 @@
+export { GoArrow } from './GoArrow';

@@ -4,11 +4,14 @@ import { roomLinks } from '../../../../utils/roomLinks';
 import { Door } from '../../../objects/Door';
 import { WallPaper } from '../../../objects/WallPaper';
 import { PlatPlace } from '../../../objects/PlatPlace';
+import { Prealoader } from '../../../UI/Preloader';
+import { GoArrow } from '../../../objects/GoArrow';
 import background from './hall.jpg';
 
 export const Hall = () => {
   return (
     <div className={styles.wrapper}>
+      <Prealoader />
       <div
         className={styles.background}
         style={{ backgroundImage: `url(${background})` }}
@@ -21,6 +24,7 @@ export const Hall = () => {
         <PlatPlace left="21.2%" top="42.2%" />
         <PlatPlace left="35%" top="53%" />
         <PlatPlace left="50%" top="64%" />
+        <GoArrow left="75%" top="64%" to={roomLinks.hall2ndRight.link} />
       </div>
     </div>
   );

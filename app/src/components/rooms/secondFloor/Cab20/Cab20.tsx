@@ -3,10 +3,12 @@ import styles from './Cab20.module.scss';
 import { Door } from '../../../objects/Door';
 import background from './Cab20.jpg';
 import { roomLinks } from '../../../../utils/roomLinks';
+import { Prealoader } from '../../../UI/Preloader';
 
 export const Cab20 = () => {
   return (
     <div className={styles.wrapper}>
+      <Prealoader />
       <div
         className={styles.background}
         style={{ backgroundImage: `url(${background})` }}

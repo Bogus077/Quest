@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Door.module.scss';
 import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import image from './door.png';
+import { ObjectPreloader } from '../../UI/ObjectPreloader';
 const cx = classNames.bind(styles);
 
 type Props = {
@@ -13,14 +14,23 @@ type Props = {
 };
 
 export const Door = ({ left, top, to, mirrored }: Props) => {
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   return (
-    <img
-      className={cx(styles.objects, { mirrored: mirrored })}
-      src={image}
-      alt="Door"
-      style={{ left, top }}
-      onClick={() => (to ? navigate(to) : {})}
-    />
+    <>
+      {isLoading && (
+        <div style={{ left, top, position: 'absolute' }}>
+          <ObjectPreloader />
+        </div>
+      )}
+      <img
+        className={cx(styles.objects, { mirrored: mirrored })}
+        src={image}
+        alt="Door"
+        style={{ left, top, opacity: isLoading ? 0 : 1 }}
+        onClick={() => (to ? navigate(to) : {})}
+        onLoad={() => setIsLoading(false)}
+      />
+    </>
   );
 };

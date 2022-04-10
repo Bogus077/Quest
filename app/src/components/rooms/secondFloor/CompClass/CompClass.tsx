@@ -4,10 +4,12 @@ import { Door } from '../../../objects/Door';
 import { ComputerDesk } from '../../../objects/ComputerDesk';
 import { roomLinks } from '../../../../utils/roomLinks';
 import background from './compClass.jpg';
+import { Prealoader } from '../../../UI/Preloader';
 
 export const CompClass = () => {
   return (
     <div className={styles.wrapper}>
+      <Prealoader />
       <div
         className={styles.background}
         style={{ backgroundImage: `url(${background})` }}

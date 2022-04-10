@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { ObjectPreloader } from '../../UI/ObjectPreloader';
 import styles from './GreenDesk.module.scss';
 import image from './greenDesk.png';
 
@@ -8,12 +9,21 @@ type Props = {
 };
 
 export const GreenDesk = ({ left, top }: Props) => {
+  const [isLoading, setIsLoading] = useState(true);
   return (
-    <img
-      className={styles.objects}
-      src={image}
-      alt="GreenDesk"
-      style={{ left, top }}
-    />
+    <div>
+      {isLoading && (
+        <div style={{ left, top, position: 'absolute' }}>
+          <ObjectPreloader />
+        </div>
+      )}
+      <img
+        className={styles.objects}
+        src={image}
+        alt="GreenDesk"
+        style={{ left, top, opacity: isLoading ? 0 : 1 }}
+        onLoad={() => setIsLoading(false)}
+      />
+    </div>
   );
 };

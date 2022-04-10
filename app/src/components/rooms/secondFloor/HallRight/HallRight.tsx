@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './CompClass.module.scss';
+import styles from './HallRight.module.scss';
 import { Door } from '../../../objects/Door';
-import compClass from './compClass.jpg';
+import compClass from './hallRight.jpg';
 import { Prealoader } from '../../../UI/Preloader';
 
-export const CompClass = () => {
+export const HallRight = () => {
   return (
     <div className={styles.wrapper}>
       <Prealoader />
@@ -12,7 +12,8 @@ export const CompClass = () => {
         className={styles.background}
         style={{ backgroundImage: `url(${compClass})` }}
       >
-        <Door left="58%" top="76%" to="/" />
+        <Door left="50%" top="32.2%" to="/" />
+        <Door left="65%" top="44.5%" to="/" />
       </div>
     </div>
   );
