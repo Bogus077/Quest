@@ -10,6 +10,7 @@ import { RoomPage } from './pages/RoomPage';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import { ProtectedRoutes } from './utils/router/ProtectedRoutes';
+import { PromoPage } from './pages/PromoPage';
 
 const store = createStore(); // Possible additional params to store init func
 const persistor = persistStore(store);
@@ -20,7 +21,7 @@ export const App = () => {
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <Routes>
-            <Route path={'/'} element={<RoomPage />} />
+            <Route path={'/'} element={<PromoPage />} />
             <Route path={'/room'} element={<RoomPage />} />
             <Route path={'/room/:roomId'} element={<RoomPage />} />
             <Route element={<ProtectedRoutes />}>
