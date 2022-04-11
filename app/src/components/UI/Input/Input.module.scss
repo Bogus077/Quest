@@ -1,0 +1,47 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  input {
+    color: #fff;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-bottom: 2px solid #fff;
+    outline: none;
+    transition: 0.3s;
+    width: 200px;
+
+    &:focus,
+    &:focus-within {
+      border: none;
+      border-bottom: 2px solid #fff;
+    }
+  }
+
+  &_error {
+    input {
+      border-bottom-color: #e73d3d;
+    }
+  }
+}
+
+.error {
+  color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 40px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

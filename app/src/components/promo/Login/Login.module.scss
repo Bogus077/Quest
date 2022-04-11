@@ -1,0 +1,27 @@
+.wrapper {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  height: 200px;
+}
+
+.form {
+  position: absolute;
+  width: 100%;
+  transition: 0.5s;
+
+  &__password {
+    transform: translate(100%);
+
+    &_active {
+      transform: translate(0%);
+    }
+  }
+
+  &__phone_hidden {
+    transform: translate(-100%);
+  }
+}
