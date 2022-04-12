@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './MenuItem.module.scss';
 import classNames from 'classnames/bind';
 import { Login } from '../Login';
+import { Registration } from '../Registration';
 const cx = classNames.bind(styles);
 
 type Props = {
@@ -38,6 +39,11 @@ export const MenuItem = ({
       {expanded && id === 1 && (
         <div className={styles.expandedItem}>
           <Login />
+        </div>
+      )}
+      {expanded && id === 2 && (
+        <div className={styles.expandedItem}>
+          <Registration />
         </div>
       )}
 

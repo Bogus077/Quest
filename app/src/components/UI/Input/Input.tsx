@@ -16,7 +16,11 @@ export const Input = ({ error, name, value, onChange, placeholder }: Props) => {
     <div className={cx('wrapper', { wrapper_error: error })}>
       <input
         type={
-          name === 'password' ? 'password' : name === 'phone' ? 'tel' : 'text'
+          name === 'password' || name === 'passwordConfirm'
+            ? 'password'
+            : name === 'phone'
+            ? 'tel'
+            : 'text'
         }
         placeholder={placeholder}
         name={name}

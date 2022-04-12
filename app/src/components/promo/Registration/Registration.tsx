@@ -4,11 +4,11 @@ import { Formik } from 'formik';
 import { loginValidationSchema, passwordValidationSchema } from './validator';
 import classNames from 'classnames/bind';
 import { Button } from '../../UI/Button';
-import styles from './Login.module.scss';
+import styles from './Registration.module.scss';
 import { Carousel } from '../Carousel';
 const cx = classNames.bind(styles);
 
-export const Login = () => {
+export const Registration = () => {
   const [step, setStep] = useState(0);
   const nextStep = () => setStep((prevState) => prevState + 1);
 
@@ -18,7 +18,10 @@ export const Login = () => {
     nextStep();
   };
 
-  const handleSubmitStep2 = (values: { password: string }) => {
+  const handleSubmitStep2 = (values: {
+    password: string;
+    passwordConfirm: string;
+  }) => {
     // eslint-disable-next-line no-console
     console.log(values);
   };
@@ -48,7 +51,7 @@ export const Login = () => {
 
   const step2 = (
     <Formik
-      initialValues={{ password: '' }}
+      initialValues={{ password: '', passwordConfirm: '' }}
       validationSchema={passwordValidationSchema}
       onSubmit={handleSubmitStep2}
     >
@@ -60,6 +63,13 @@ export const Login = () => {
             value={formik.values.password}
             onChange={formik.handleChange}
             placeholder="Введите пароль"
+          />
+          <Input
+            error={formik.errors.passwordConfirm}
+            name="passwordConfirm"
+            value={formik.values.passwordConfirm}
+            onChange={formik.handleChange}
+            placeholder="Повторите"
           />
           <div onClick={formik.submitForm}>
             <Button label="Войти" />
