@@ -12,11 +12,16 @@ server {
 	location / {
 	    return 301 https://$host$request_uri;
 	}
+
+	location /api {
+	    add_header X-Debug test;
+  		proxy_pass http://kk-u.ru:3000;
+	}
 }
 
 server {
 	listen 443 ssl;
-	server_name _;
+	server_name kk-u.ru;
 
     # root /;
 
@@ -28,5 +33,32 @@ server {
 	location / {
 	    add_header X-Debug test;
   		proxy_pass http://web;
+	}
+
+	location /api {
+	    add_header X-Debug test;
+  		proxy_pass http://kk-u.ru:3000;
+	}
+}
+
+server {
+	listen 443 ssl;
+	server_name kk-a.ru;
+
+    # root /;
+
+	# SSL
+	ssl_certificate /etc/letsencrypt/live/kk-a.ru/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/kk-a.ru/privkey.pem;
+	ssl_trusted_certificate /etc/letsencrypt/live/kk-a.ru/chain.pem;
+
+	location / {
+	    add_header X-Debug test;
+  		proxy_pass http://web;
+	}
+
+	location /api {
+	    add_header X-Debug test;
+  		proxy_pass http://kk-u.ru:3000;
 	}
 }
