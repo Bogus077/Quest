@@ -9,7 +9,8 @@ services:
       - ./app:/app
     expose:
       - '3000'
-    entrypoint: [sh, -c, 'cd /app && yarn install && yarn start']
+    entrypoint:
+      [sh, -c, 'cd /app && yarn install && yarn build && serve -s build']
   nginx:
     image: nginx:alpine
     tty: true
