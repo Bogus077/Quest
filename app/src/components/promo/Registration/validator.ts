@@ -6,6 +6,11 @@ export const loginValidationSchema = object({
     .required('Поле не заполнено'),
 });
 
+export const nameValidationSchema = object({
+  name: string().required('Поле не заполнено'),
+  lastName: string().required('Поле не заполнено'),
+});
+
 export const passwordValidationSchema = object({
   password: string()
     .min(6, 'Пароль не может быть короче 6 символов')

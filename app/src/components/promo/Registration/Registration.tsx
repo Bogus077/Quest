@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { Input } from '../../UI/Input';
 import { Formik } from 'formik';
-import { loginValidationSchema, passwordValidationSchema } from './validator';
+import {
+  loginValidationSchema,
+  nameValidationSchema,
+  passwordValidationSchema,
+} from './validator';
 import classNames from 'classnames/bind';
 import { Button } from '../../UI/Button';
 import styles from './Registration.module.scss';
@@ -10,27 +14,47 @@ const cx = classNames.bind(styles);
 
 export const Registration = () => {
   const [step, setStep] = useState(0);
-  const nextStep = () => setStep((prevState) => prevState + 1);
+  const [registrationData, setRegistrationData] = useState({
+    name: '',
+    lastName: '',
+    phone: '',
+    password: '',
+  });
+  const nextStep = () => setStep(step + 1);
+  const prevStep = () => setStep(step - 1);
 
-  const handleSubmit = (values: { phone: string }) => {
-    // eslint-disable-next-line no-console
-    console.log(values);
+  const handleSubmitStep1 = (values: { phone: string }) => {
+    setRegistrationData({ ...registrationData, phone: values.phone });
     nextStep();
   };
 
-  const handleSubmitStep2 = (values: {
+  const handleSubmitStep2 = (values: { name: string; lastName: string }) => {
+    setRegistrationData({
+      ...registrationData,
+      name: values.name,
+      lastName: values.lastName,
+    });
+    nextStep();
+  };
+
+  const handleSubmitStep3 = (values: {
     password: string;
     passwordConfirm: string;
   }) => {
-    // eslint-disable-next-line no-console
-    console.log(values);
+    setRegistrationData({
+      ...registrationData,
+      password: values.password,
+    });
+    nextStep();
   };
+
+  const sendForm = () => {};
 
   const step1 = (
     <Formik
       initialValues={{ phone: '' }}
       validationSchema={loginValidationSchema}
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmitStep1}
     >
       {(formik) => (
         <form className={cx('form', 'form__phone')}>
@@ -41,7 +65,7 @@ export const Registration = () => {
             onChange={formik.handleChange}
             placeholder="+7 (___) ___ __ __"
           />
-          <div onClick={formik.submitForm}>
+          <div onClick={formik.submitForm} className={styles.buttons}>
             <Button label="Далее" />
           </div>
         </form>
@@ -51,9 +75,44 @@ export const Registration = () => {
 
   const step2 = (
     <Formik
+      initialValues={{ name: '', lastName: '' }}
+      validationSchema={nameValidationSchema}
+      onSubmit={handleSubmitStep2}
+    >
+      {(formik) => (
+        <form className={cx('form', 'form__password')}>
+          <Input
+            error={formik.errors.name}
+            name="name"
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            placeholder="Имя"
+          />
+          <Input
+            error={formik.errors.lastName}
+            name="lastName"
+            value={formik.values.lastName}
+            onChange={formik.handleChange}
+            placeholder="Фамилия"
+          />
+          <div className={styles.buttons}>
+            <div className={styles.buttons__back} onClick={prevStep}>
+              <Button label="Назад" />
+            </div>
+            <div onClick={formik.submitForm}>
+              <Button label="Далее" />
+            </div>
+          </div>
+        </form>
+      )}
+    </Formik>
+  );
+
+  const step3 = (
+    <Formik
       initialValues={{ password: '', passwordConfirm: '' }}
       validationSchema={passwordValidationSchema}
-      onSubmit={handleSubmitStep2}
+      onSubmit={handleSubmitStep3}
     >
       {(formik) => (
         <form className={cx('form', 'form__password')}>
@@ -71,15 +130,43 @@ export const Registration = () => {
             onChange={formik.handleChange}
             placeholder="Повторите"
           />
-          <div onClick={formik.submitForm}>
-            <Button label="Войти" />
+          <div className={styles.buttons}>
+            <div className={styles.buttons__back} onClick={prevStep}>
+              <Button label="Назад" />
+            </div>
+            <div onClick={formik.submitForm}>
+              <Button label="Проверить" />
+            </div>
           </div>
         </form>
       )}
     </Formik>
   );
 
-  const elements = [step1, step2];
+  const step4 = (
+    <div onClick={sendForm} className={styles.submitData}>
+      <div className={styles.submitData__row}>
+        <span className={styles.submitData__name}>Имя:</span>
+        <span>{registrationData.name}</span>
+      </div>
+      <div className={styles.submitData__row}>
+        <span className={styles.submitData__name}>Фамилия:</span>
+        <span>{registrationData.lastName}</span>
+      </div>
+      <div className={styles.submitData__row}>
+        <span className={styles.submitData__name}>Телефон:</span>
+        <span>{registrationData.phone}</span>
+      </div>
+      <div className={styles.buttons}>
+        <div className={styles.buttons__back} onClick={prevStep}>
+          <Button label="Назад" />
+        </div>
+        <Button label="Регистрация" />
+      </div>
+    </div>
+  );
+
+  const elements = [step1, step2, step3, step4];
 
   return (
     <div className={styles.wrapper}>

@@ -15,13 +15,6 @@ export const Carousel = ({ stepElements, step }: Props) => {
           {item}
         </div>
       ))}
-
-      <div className={styles.item} style={style}>
-        2
-      </div>
-      <div className={styles.item} style={style}>
-        3
-      </div>
     </div>
   );
 };
