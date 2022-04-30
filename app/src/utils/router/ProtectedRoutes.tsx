@@ -1,7 +1,9 @@
 import { Navigate, Outlet } from 'react-router-dom';
+import { useTypedSelector } from '../../redux';
+import { isAuthorized } from '../../redux/userSlice';
 
 export const ProtectedRoutes = () => {
-  const isAuthorized = true;
+  const isUserAuthorized = useTypedSelector(isAuthorized);
 
-  return isAuthorized ? <Outlet /> : <Navigate to={'/login'} />;
+  return isUserAuthorized ? <Outlet /> : <Navigate to={'/'} />;
 };

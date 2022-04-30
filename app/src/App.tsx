@@ -22,10 +22,9 @@ export const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path={'/'} element={<PromoPage />} />
-            <Route path={'/room'} element={<RoomPage />} />
-            <Route path={'/room/:roomId'} element={<RoomPage />} />
             <Route element={<ProtectedRoutes />}>
-              <></>
+              <Route path={'/room'} element={<RoomPage />} />
+              <Route path={'/room/:roomId'} element={<RoomPage />} />
             </Route>
           </Routes>
         </BrowserRouter>

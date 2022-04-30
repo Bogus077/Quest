@@ -7,16 +7,6 @@ export const ROSATOM_API = axios.create({
 export const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 export const apiRoutes = {
-  login: '/auth/login',
-  logout: '/auth/logout',
-  getUserData: '/user',
-  updateUserData: '/user',
-  getUserDashboard: '/user/dashboard',
-  editUserDashboard: '/user/dashboard/settings',
-  getAllDashboards: '/dashboards',
-  getAvailableDashboards: '/user/dashboard/available',
-  getUserNotifications: '/user/notifications',
-  getUserNotificationsSettings: '/user/notifications/settings',
-  editUserNotificationsSettings: '/user/notifications/settings',
-  getStyles: '/styles',
+  signUp: '/user/signUp',
+  logIn: '/user/logIn',
 };

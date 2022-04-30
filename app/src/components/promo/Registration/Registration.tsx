@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input } from '../../UI/Input';
 import { Formik } from 'formik';
 import {
@@ -10,9 +10,19 @@ import classNames from 'classnames/bind';
 import { Button } from '../../UI/Button';
 import styles from './Registration.module.scss';
 import { Carousel } from '../Carousel';
+import { getUserError, isAuthorized, signUp } from '../../../redux/userSlice';
+import { useTypedDispatch, useTypedSelector } from '../../../redux';
+import { useNavigate } from 'react-router-dom';
+import { roomLinks } from '../../../utils/roomLinks';
 const cx = classNames.bind(styles);
 
 export const Registration = () => {
+  const dispatch = useTypedDispatch();
+  const navigate = useNavigate();
+
+  const isUserAuthorized = useTypedSelector(isAuthorized);
+  const authError = useTypedSelector(getUserError);
+
   const [step, setStep] = useState(0);
   const [registrationData, setRegistrationData] = useState({
     name: '',
@@ -22,6 +32,10 @@ export const Registration = () => {
   });
   const nextStep = () => setStep(step + 1);
   const prevStep = () => setStep(step - 1);
+
+  useEffect(() => {
+    if (isUserAuthorized) navigate(roomLinks.hall2nd.link);
+  }, [isUserAuthorized, navigate]);
 
   const handleSubmitStep1 = (values: { phone: string }) => {
     setRegistrationData({ ...registrationData, phone: values.phone });
@@ -48,7 +62,9 @@ export const Registration = () => {
     nextStep();
   };
 
-  const sendForm = () => {};
+  const sendForm = () => {
+    dispatch(signUp(registrationData));
+  };
 
   const step1 = (
     <Formik
@@ -117,7 +133,7 @@ export const Registration = () => {
       {(formik) => (
         <form className={cx('form', 'form__password')}>
           <Input
-            error={formik.errors.password}
+            error={formik.errors.password && authError}
             name="password"
             value={formik.values.password}
             onChange={formik.handleChange}
@@ -144,7 +160,7 @@ export const Registration = () => {
   );
 
   const step4 = (
-    <div onClick={sendForm} className={styles.submitData}>
+    <div className={styles.submitData}>
       <div className={styles.submitData__row}>
         <span className={styles.submitData__name}>Имя:</span>
         <span>{registrationData.name}</span>
@@ -161,7 +177,9 @@ export const Registration = () => {
         <div className={styles.buttons__back} onClick={prevStep}>
           <Button label="Назад" />
         </div>
-        <Button label="Регистрация" />
+        <div onClick={sendForm}>
+          <Button label="Регистрация" />
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input } from '../../UI/Input';
 import { Formik } from 'formik';
 import { loginValidationSchema, passwordValidationSchema } from './validator';
@@ -6,21 +6,39 @@ import classNames from 'classnames/bind';
 import { Button } from '../../UI/Button';
 import styles from './Login.module.scss';
 import { Carousel } from '../Carousel';
+import { useTypedDispatch, useTypedSelector } from '../../../redux';
+import {
+  clearErrors,
+  getUserError,
+  isAuthorized,
+  logIn,
+} from '../../../redux/userSlice';
+import { useNavigate } from 'react-router-dom';
+import { roomLinks } from '../../../utils/roomLinks';
 const cx = classNames.bind(styles);
 
 export const Login = () => {
+  const dispatch = useTypedDispatch();
+  const navigate = useNavigate();
+
+  const isUserAuthorized = useTypedSelector(isAuthorized);
+  const authError = useTypedSelector(getUserError);
+
   const [step, setStep] = useState(0);
+  const [phone, setPhone] = useState('');
   const nextStep = () => setStep((prevState) => prevState + 1);
 
+  useEffect(() => {
+    if (isUserAuthorized) navigate(roomLinks.hall2nd.link);
+  }, [isUserAuthorized, navigate]);
+
   const handleSubmit = (values: { phone: string }) => {
-    // eslint-disable-next-line no-console
-    console.log(values);
+    setPhone(values.phone);
     nextStep();
   };
 
   const handleSubmitStep2 = (values: { password: string }) => {
-    // eslint-disable-next-line no-console
-    console.log(values);
+    dispatch(logIn({ phone, password: values.password }));
   };
 
   const step1 = (
@@ -55,7 +73,7 @@ export const Login = () => {
       {(formik) => (
         <form className={cx('form', 'form__password')}>
           <Input
-            error={formik.errors.password}
+            error={formik.errors.password || authError}
             name="password"
             value={formik.values.password}
             onChange={formik.handleChange}
@@ -64,6 +82,17 @@ export const Login = () => {
           <div onClick={formik.submitForm}>
             <Button label="Войти" />
           </div>
+
+          {authError && (
+            <div
+              onClick={() => {
+                dispatch(clearErrors());
+                navigate('/room');
+              }}
+            >
+              <Button label="Попробовать ещё раз" />
+            </div>
+          )}
         </form>
       )}
     </Formik>
