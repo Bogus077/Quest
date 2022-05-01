@@ -9,26 +9,37 @@ import { TeachersRoom } from '../../components/rooms/secondFloor/TeachersRoom';
 import { Press } from '../../components/rooms/secondFloor/Press';
 import { SportRoom } from '../../components/rooms/firstFloor/SportRoom';
 import { roomLinks } from '../../utils/roomLinks';
+import { Layout } from '../../components/Layout';
 
 export const RoomPage = () => {
   const roomId = useParams().roomId;
+  let room = <Hall />;
 
   switch (roomId) {
     case roomLinks.compClass.id:
-      return <CompClass />;
+      room = <CompClass />;
+      break;
     case roomLinks.cab20.id:
-      return <Cab20 />;
+      room = <Cab20 />;
+      break;
     case roomLinks.cab20a.id:
-      return <Cab20a />;
+      room = <Cab20a />;
+      break;
     case roomLinks.hall2ndRight.id:
-      return <HallRight />;
+      room = <HallRight />;
+      break;
     case roomLinks.teachersRoom.id:
-      return <TeachersRoom />;
+      room = <TeachersRoom />;
+      break;
     case roomLinks.press.id:
-      return <Press />;
+      room = <Press />;
+      break;
     case roomLinks.sportRoom.id:
-      return <SportRoom />;
+      room = <SportRoom />;
+      break;
     default:
-      return <Hall />;
+      room = <Hall />;
   }
+
+  return <Layout>{room}</Layout>;
 };
