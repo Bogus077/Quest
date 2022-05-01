@@ -9,25 +9,31 @@ type Props = {
 export const DialogText = ({ text, nextDialog }: Props) => {
   const [output, setOutput] = useState(text.slice(0, 1));
   const [full, setFull] = useState(false);
-  const duration = 50;
+  const duration = 25;
 
   const onClick = () => {
     if (output !== text) {
-      setOutput(text);
+      createOutput(text);
       setFull(true);
     } else {
       nextDialog();
     }
   };
 
-  const createOutput = useCallback(() => {
-    setTimeout(
-      () => setOutput(text.slice(0, full ? text.length : output.length + 1)),
-      duration
-    );
-  }, [full, output.length, text]);
+  const createOutput = useCallback(
+    (specialCaseText) => {
+      setTimeout(
+        () =>
+          specialCaseText
+            ? setOutput(specialCaseText)
+            : setOutput(text.slice(0, full ? text.length : output.length + 1)),
+        duration
+      );
+    },
+    [full, output.length, text]
+  );
 
-  useEffect(() => createOutput(), [createOutput]);
+  useEffect(() => createOutput(undefined), [createOutput]);
 
   return (
     <div onClick={onClick} className={styles.dialog}>

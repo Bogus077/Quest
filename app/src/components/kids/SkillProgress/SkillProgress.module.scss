@@ -1,0 +1,15 @@
+.progress {
+  display: flex;
+
+  &__item {
+    width: 19px;
+    height: 10px;
+    border: 1px solid #ccc;
+    margin-left: 2px;
+
+    &_active {
+      background-color: #ff6633;
+      border-color: #ff6633;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Hall.module.scss';
 import { roomLinks } from '../../../../utils/roomLinks';
 import { Door } from '../../../objects/Door';
@@ -7,8 +7,11 @@ import { PlatPlace } from '../../../objects/PlatPlace';
 import { Prealoader } from '../../../UI/Preloader';
 import { GoArrow } from '../../../objects/GoArrow';
 import background from './hall.jpg';
+import { Popup } from '../../../UI/Popup';
+import { TeamPopup } from '../../../UI/Popup/TeamPopup';
 
 export const Hall = () => {
+  const [teamPopupVisible, setTeamPopupVisible] = useState(false);
   return (
     <div className={styles.wrapper}>
       <Prealoader />
@@ -21,7 +24,9 @@ export const Hall = () => {
         <WallPaper left="50.5%" top="16%" />
         <WallPaper left="63%" top="25%" />
         <WallPaper left="75.5%" top="34.5%" />
-        <PlatPlace left="21.2%" top="42.2%" />
+        <div onClick={() => setTeamPopupVisible(true)}>
+          <PlatPlace left="21.2%" top="42.2%" />
+        </div>
         <PlatPlace left="35%" top="53%" />
         <PlatPlace left="50%" top="64%" />
         <GoArrow left="75%" top="64%" to={roomLinks.hall2ndRight.link} />
@@ -32,6 +37,11 @@ export const Hall = () => {
           mirrored={true}
         />
       </div>
+      {teamPopupVisible && (
+        <Popup isPopupOpen={setTeamPopupVisible} isOpened={teamPopupVisible}>
+          <TeamPopup isPopupOpen={setTeamPopupVisible} />
+        </Popup>
+      )}
     </div>
   );
 };

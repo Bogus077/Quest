@@ -1,0 +1,1 @@
+export { KidCard } from './KidCard';

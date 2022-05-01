@@ -1,0 +1,24 @@
+@mixin standartPopup {
+  .popup {
+    position: relative;
+    background-color: #fff;
+    min-width: 375px;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+
+    &__close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+    }
+
+    &__header {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  }
+}

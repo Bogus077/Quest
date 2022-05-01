@@ -1,0 +1,25 @@
+.button {
+  width: 100%;
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #ff6633;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ff6633;
+    border-color: #ff6633;
+    color: #fff;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+}

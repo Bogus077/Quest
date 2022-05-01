@@ -7,9 +7,21 @@ import petrovAngry from './img/Petrov/angry.png';
 import petrovSad from './img/Petrov/sad.png';
 import petrovSurprise from './img/Petrov/surprise.png';
 import { welcomeDialog } from './dialogs';
+import { useTypedDispatch, useTypedSelector } from '../../../redux';
+import { getDialogsQueie } from '../../../redux/userSlice';
 
 export const Dialog = () => {
-  const dialogsArray = welcomeDialog;
+  const availableDialogs = { welcomeDialog };
+  const dialogsQueie = useTypedSelector(getDialogsQueie);
+  const dispatch = useTypedDispatch();
+
+  const dialogsArray = dialogsQueie?.[0]
+    ? availableDialogs[dialogsQueie?.[0]].dialog
+    : [];
+  const onFinish = dialogsQueie?.[0]
+    ? availableDialogs[dialogsQueie?.[0]].onFinish
+    : undefined;
+
   const [dialog, setDialog] = useState<typeof dialogsArray[0] | undefined>(
     dialogsArray[0]
   );
@@ -21,12 +33,22 @@ export const Dialog = () => {
     setDialog(undefined);
 
     setTimeout(() => setDialog(nextDialog), 100);
+    if (!nextDialog && onFinish) dispatch(onFinish());
   };
 
   let personImgSrc = petrovRegular;
   switch (dialog?.emotion) {
     case 'happy':
       personImgSrc = petrovHappy;
+      break;
+    case 'angry':
+      personImgSrc = petrovAngry;
+      break;
+    case 'sad':
+      personImgSrc = petrovSad;
+      break;
+    case 'surprise':
+      personImgSrc = petrovSurprise;
       break;
     case 'regular':
     default:

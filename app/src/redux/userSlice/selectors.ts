@@ -16,3 +16,8 @@ export const getUserError = createDraftSafeSelector(
   selectSelf,
   (store) => store.error
 );
+
+export const getDialogsQueie = createDraftSafeSelector(
+  selectSelf,
+  (store) => store.dialogsQueue
+);

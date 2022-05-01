@@ -1,15 +1,17 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { User } from '../../types/user';
 import { logIn, signUp } from './thunks';
 
 export type InitialState = {
   user?: User;
+  dialogsQueue?: Array<'welcomeDialog'>;
   error?: string;
   loading: boolean;
 };
 
 const initialState: InitialState = {
   loading: false,
+  dialogsQueue: ['welcomeDialog'],
 };
 
 const userSlice = createSlice({
@@ -18,6 +20,11 @@ const userSlice = createSlice({
   reducers: {
     clearErrors: (state) => {
       state.error = undefined;
+    },
+    makeWelcomeDialogDone: (state) => {
+      state.dialogsQueue = state.dialogsQueue?.filter(
+        (item) => item !== 'welcomeDialog'
+      );
     },
   },
   extraReducers: (builder) => {
@@ -50,6 +57,6 @@ const userSlice = createSlice({
 });
 
 export const { reducer: userReducer } = userSlice;
-export const { clearErrors } = userSlice.actions;
+export const { clearErrors, makeWelcomeDialogDone } = userSlice.actions;
 export * from './thunks';
 export * from './selectors';
