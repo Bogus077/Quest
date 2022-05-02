@@ -1,4 +1,5 @@
 import React from 'react';
+import { IconTypes } from '../../../types/icons';
 import { Kid } from '../../../types/kids';
 import { PopupButton } from '../../UI/Popup/PopupButton';
 import { KidAvatar } from '../KidAvatar';
@@ -7,9 +8,17 @@ import styles from './KidCard.module.scss';
 
 type Props = {
   kid: Kid;
+  buttonText: string;
+  buttonIcon: IconTypes;
+  onButtonClick: () => void;
 };
 
-export const KidCard = ({ kid }: Props) => {
+export const KidCard = ({
+  kid,
+  buttonText,
+  buttonIcon,
+  onButtonClick,
+}: Props) => {
   return (
     <div className={styles.card}>
       <div className={styles.card__avatar}>
@@ -36,8 +45,8 @@ export const KidCard = ({ kid }: Props) => {
           <KidSkill skill="speed" value={kid.speed} />
         </div>
       </div>
-      <div className={styles.button}>
-        <PopupButton label="ВЗЯТЬ В КОМАНДУ" icon="check" />
+      <div className={styles.button} onClick={() => onButtonClick()}>
+        <PopupButton label={buttonText} icon={buttonIcon} />
       </div>
     </div>
   );

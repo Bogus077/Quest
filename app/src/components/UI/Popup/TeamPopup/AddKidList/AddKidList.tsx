@@ -26,10 +26,20 @@ export const AddKidList = () => {
   return (
     <div className={styles.list}>
       <div className={styles.list__item}>
-        <KidCard kid={kid1} />
+        <KidCard
+          kid={kid1}
+          buttonText="ВЗЯТЬ В КОМАНДУ"
+          buttonIcon="check"
+          onButtonClick={() => {}}
+        />
       </div>
       <div className={styles.list__item}>
-        <KidCard kid={kid2} />
+        <KidCard
+          kid={kid2}
+          buttonText="ВЗЯТЬ В КОМАНДУ"
+          buttonIcon="check"
+          onButtonClick={() => {}}
+        />
       </div>
     </div>
   );

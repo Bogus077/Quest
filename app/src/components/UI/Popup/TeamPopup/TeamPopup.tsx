@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon } from '../../Icon';
 import { PopupTabs } from '../PopupTabs';
 import { AddKidList } from './AddKidList';
+import { TeamList } from './TeamList';
 import styles from './TeamPopup.module.scss';
 
 type Props = {
@@ -11,7 +12,7 @@ type Props = {
 export const TeamPopup = ({ isPopupOpen }: Props) => {
   const tabs = [
     { header: 'Набор в команду', tab: <AddKidList /> },
-    { header: 'Управление', tab: <>TAB 2</> },
+    { header: 'Управление', tab: <TeamList /> },
   ];
 
   return (

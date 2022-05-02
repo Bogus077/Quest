@@ -1,0 +1,21 @@
+@import '../../../assets/helpers/index.scss';
+
+.chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__header {
+    font-weight: bold;
+    color: $secondaryText;
+  }
+
+  &__item {
+    margin-top: 10px;
+  }
+
+  &__legend {
+    margin: 5px 0;
+    width: 100%;
+  }
+}
