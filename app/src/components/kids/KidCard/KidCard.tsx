@@ -24,7 +24,7 @@ export const KidCard = ({
       <div className={styles.card__avatar}>
         <KidAvatar />
         <div className={styles.card__info}>
-          <span className={styles.name}>{kid.name}</span>
+          <span className={styles.name}>{`${kid.lastName} ${kid.name}`}</span>
           <span className={styles.position}>{kid.position}</span>
         </div>
       </div>

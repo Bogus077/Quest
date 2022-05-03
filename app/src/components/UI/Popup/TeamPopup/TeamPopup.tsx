@@ -1,4 +1,9 @@
 import React from 'react';
+import { useTypedDispatch } from '../../../../redux';
+import {
+  getAvailableKidsThunk,
+  getTeamKidsThunk,
+} from '../../../../redux/teamSlice';
 import { Icon } from '../../Icon';
 import { PopupTabs } from '../PopupTabs';
 import { AddKidList } from './AddKidList';
@@ -14,6 +19,10 @@ export const TeamPopup = ({ isPopupOpen }: Props) => {
     { header: 'Набор в команду', tab: <AddKidList /> },
     { header: 'Управление', tab: <TeamList /> },
   ];
+
+  const dispatch = useTypedDispatch();
+  dispatch(getAvailableKidsThunk(''));
+  dispatch(getTeamKidsThunk(''));
 
   return (
     <div className={styles.popup}>

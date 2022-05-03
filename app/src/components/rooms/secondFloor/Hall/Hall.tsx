@@ -26,9 +26,9 @@ export const Hall = () => {
         <WallPaper left="75.5%" top="34.5%" />
         <div onClick={() => setTeamPopupVisible(true)}>
           <PlatPlace left="21.2%" top="42.2%" />
+          <PlatPlace left="35%" top="53%" />
+          <PlatPlace left="50%" top="64%" />
         </div>
-        <PlatPlace left="35%" top="53%" />
-        <PlatPlace left="50%" top="64%" />
         <GoArrow left="75%" top="64%" to={roomLinks.hall2ndRight.link} />
         <GoArrow
           left="25%"

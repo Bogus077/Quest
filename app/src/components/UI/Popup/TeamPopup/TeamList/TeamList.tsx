@@ -1,10 +1,13 @@
 import React from 'react';
 import { ChartSquare } from '../../../../charts/ChartSquare';
 import { KidCard } from '../../../../kids/KidCard';
-import { kid1, kid2, chart1, chart2, chart3 } from './teamListMock';
+import { chart1, chart2, chart3 } from './teamListMock';
 import styles from './TeamList.module.scss';
+import { useTypedSelector } from '../../../../../redux';
+import { getTeamKids } from '../../../../../redux/teamSlice';
 
 export const TeamList = () => {
+  const teamKids = useTypedSelector(getTeamKids);
   return (
     <div className={styles.team}>
       <div className={styles.info}>
@@ -32,22 +35,16 @@ export const TeamList = () => {
       </div>
       <span className={styles.subheader}>Состав команды</span>
       <div className={styles.list}>
-        <div className={styles.list__item}>
-          <KidCard
-            kid={kid1}
-            buttonText="ВЗЯТЬ В КОМАНДУ"
-            buttonIcon="check"
-            onButtonClick={() => {}}
-          />
-        </div>
-        <div className={styles.list__item}>
-          <KidCard
-            kid={kid2}
-            buttonText="ВЗЯТЬ В КОМАНДУ"
-            buttonIcon="check"
-            onButtonClick={() => {}}
-          />
-        </div>
+        {teamKids.map((kid) => (
+          <div key={kid.id} className={styles.list__item}>
+            <KidCard
+              kid={kid}
+              buttonText="ВЗЯТЬ В КОМАНДУ"
+              buttonIcon="check"
+              onButtonClick={() => {}}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

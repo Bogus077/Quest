@@ -9,4 +9,7 @@ export const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 export const apiRoutes = {
   signUp: '/user/signUp',
   logIn: '/user/logIn',
+  getAvailableKids: './team/getAvailableKids',
+  addKidToTeam: '/team/addKidToTeam',
+  getTeam: '/team/getTeam',
 };
