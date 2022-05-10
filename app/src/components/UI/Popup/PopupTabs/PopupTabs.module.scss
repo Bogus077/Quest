@@ -6,6 +6,7 @@
 }
 
 .headers {
+  position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -22,15 +23,20 @@
     color: $secondaryText;
     padding: 5px 10px;
     cursor: pointer;
-    border-bottom: 2px solid #fff;
 
     &:hover {
       color: $mainText;
     }
 
     &_active {
-      border-color: #ff6633;
       color: $mainText;
     }
+  }
+
+  &__line {
+    position: absolute;
+    height: 2px;
+    background-color: #ff6633;
+    transition: 0.3s;
   }
 }

@@ -12,4 +12,5 @@ export const apiRoutes = {
   getAvailableKids: './team/getAvailableKids',
   addKidToTeam: '/team/addKidToTeam',
   getTeam: '/team/getTeam',
+  getCompetitions: '/competitions/getCompetitions',
 };

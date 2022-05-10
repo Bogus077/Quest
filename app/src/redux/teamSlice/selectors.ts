@@ -12,3 +12,8 @@ export const getTeamKids = createDraftSafeSelector(
   selectSelf,
   (store) => store.teamKids
 );
+
+export const getCompetitions = createDraftSafeSelector(
+  selectSelf,
+  (store) => store.competitions
+);

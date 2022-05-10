@@ -8,6 +8,7 @@ import { SvgAgilityIcon } from './Icons/agility';
 import { SvgStrengthIcon } from './Icons/strength';
 import { SvgCheckIcon } from './Icons/check';
 import { IconTypes } from '../../../types/icons';
+import { SvgEarthIcon } from './Icons/earth';
 
 export type Props = {
   icon: IconTypes;
@@ -31,6 +32,8 @@ export const Icon = ({ icon }: Props) => {
       return <SvgStrengthIcon />;
     case 'check':
       return <SvgCheckIcon />;
+    case 'earth':
+      return <SvgEarthIcon />;
     default:
       return <></>;
   }

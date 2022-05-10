@@ -2,9 +2,11 @@ import { addKidToTeamRequest, Kid } from './../../types/kids/index';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { apiRoutes, ROSATOM_API } from '../../utils/api';
 import { InitialState } from '../userSlice';
+import { Competition } from '../../types/competitions';
 
 type defaultError = {
   errorMessage: string;
+  message?: string;
 };
 
 export const getAvailableKidsThunk = createAsyncThunk<
@@ -51,6 +53,24 @@ export const getTeamKidsThunk = createAsyncThunk<
   const state: { user: InitialState } = getState() as { user: InitialState };
   try {
     const { data } = await ROSATOM_API.get(apiRoutes.getTeam, {
+      headers: {
+        Authorization: `Bearer ${state.user.user?.accessToken as string}`,
+      },
+    });
+    return data;
+  } catch ({ response: { data } }) {
+    return rejectWithValue(data as defaultError);
+  }
+});
+
+export const getCompetitionsThunk = createAsyncThunk<
+  Competition[],
+  unknown,
+  { rejectValue: defaultError }
+>('team/getCompetitions', async (_, { getState, rejectWithValue }) => {
+  const state: { user: InitialState } = getState() as { user: InitialState };
+  try {
+    const { data } = await ROSATOM_API.get(apiRoutes.getCompetitions, {
       headers: {
         Authorization: `Bearer ${state.user.user?.accessToken as string}`,
       },

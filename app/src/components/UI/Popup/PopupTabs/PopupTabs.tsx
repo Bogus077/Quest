@@ -8,6 +8,7 @@ type Props = { tabs: { header: string; tab: ReactElement }[] };
 export const PopupTabs = ({ tabs }: Props) => {
   const headers = tabs.map((tab) => tab.header);
   const tabItems = tabs.map((tab) => tab.tab);
+  const headerWidth = Math.round(100 / headers.length);
   const [activeTab, setActiveTab] = useState(0);
 
   return (
@@ -24,6 +25,13 @@ export const PopupTabs = ({ tabs }: Props) => {
             {header}
           </div>
         ))}
+        <div
+          className={styles.headers__line}
+          style={{
+            width: `${headerWidth}%`,
+            left: `${headerWidth * activeTab}%`,
+          }}
+        />
       </div>
       <div className={styles.tabs}>{tabItems[activeTab]}</div>
     </div>

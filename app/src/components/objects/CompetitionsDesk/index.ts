@@ -1,0 +1,1 @@
+export { CompetitionsDesk } from './CompetitionsDesk';

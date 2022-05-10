@@ -1,14 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { Competition } from '../../types/competitions';
 import { Kid } from '../../types/kids';
 import {
   getAvailableKidsThunk,
   addKidToTeamThunk,
   getTeamKidsThunk,
+  getCompetitionsThunk,
 } from './thunks';
 
 export type InitialState = {
   availableKids: Kid[];
   teamKids: Kid[];
+  competitions: Competition[];
   error?: string;
   loading: boolean;
 };
@@ -17,6 +20,7 @@ const initialState: InitialState = {
   loading: false,
   availableKids: [],
   teamKids: [],
+  competitions: [],
 };
 
 const userSlice = createSlice({
@@ -63,6 +67,19 @@ const userSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(getTeamKidsThunk.rejected, (state, { payload }) => {
+      state.error = payload?.errorMessage;
+      state.loading = false;
+    });
+
+    builder.addCase(getCompetitionsThunk.pending, (state) => {
+      state.loading = true;
+      state.error = undefined;
+    });
+    builder.addCase(getCompetitionsThunk.fulfilled, (state, { payload }) => {
+      state.competitions = payload;
+      state.loading = false;
+    });
+    builder.addCase(getCompetitionsThunk.rejected, (state, { payload }) => {
       state.error = payload?.errorMessage;
       state.loading = false;
     });

@@ -56,6 +56,8 @@ const userSlice = createSlice({
   },
 });
 
+// if(payload?.message === 'Invalid token!') state.;
+
 export const { reducer: userReducer } = userSlice;
 export const { clearErrors, makeWelcomeDialogDone } = userSlice.actions;
 export * from './thunks';

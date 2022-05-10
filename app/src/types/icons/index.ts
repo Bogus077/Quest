@@ -6,4 +6,5 @@ export type IconTypes =
   | 'speed'
   | 'agility'
   | 'strength'
-  | 'check';
+  | 'check'
+  | 'earth';

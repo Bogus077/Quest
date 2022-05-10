@@ -1,0 +1,62 @@
+@import '../../../assets/helpers/index.scss';
+
+@mixin border-bottom {
+  border-bottom: 1px solid #ccc;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px;
+  border: 1px solid rgb(184, 184, 184);
+  border-radius: 5px;
+}
+
+.size {
+  text-transform: lowercase;
+  color: $secondaryText;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  @include border-bottom;
+  & span {
+    margin-left: 10px;
+  }
+}
+
+.date {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 12px;
+  color: $secondaryText;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 0;
+  @include border-bottom;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  @include border-bottom;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    background-color: rgba(255, 102, 51, 0.2);
+    border-radius: 4px;
+    margin-right: 10px;
+    color: #ff6633;
+
+    & span {
+      padding-left: 5px;
+    }
+  }
+}

@@ -1,0 +1,1 @@
+export { CompetitionsPopup } from './CompetitionsPopup';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTypedDispatch } from '../../../../redux';
 import {
   getAvailableKidsThunk,
@@ -21,8 +21,10 @@ export const TeamPopup = ({ isPopupOpen }: Props) => {
   ];
 
   const dispatch = useTypedDispatch();
-  dispatch(getAvailableKidsThunk(''));
-  dispatch(getTeamKidsThunk(''));
+  useEffect(() => {
+    dispatch(getAvailableKidsThunk(''));
+    dispatch(getTeamKidsThunk(''));
+  }, [dispatch]);
 
   return (
     <div className={styles.popup}>
